@@ -1,0 +1,13 @@
+# Deny direct access to data directory (backup for servers that don't read data/.htaccess)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^data/ - [F,L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# PHP error display off (set in php.ini or here)
+<IfModule mod_php.c>
+  php_flag display_errors Off
+</IfModule>
