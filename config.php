@@ -1,4 +1,9 @@
 <?php
+// Prevent direct HTTP access (belt-and-suspenders; Caddy config is the real guard)
+if (isset($_SERVER['REQUEST_URI']) && basename($_SERVER['PHP_SELF']) === 'config.php') {
+    http_response_code(403); exit;
+}
+
 // ── Paths ──────────────────────────────────────────────────────
 define('DATA_DIR', __DIR__ . '/data');
 define('DB_FILE',  DATA_DIR . '/homelab.db');

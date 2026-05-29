@@ -1,0 +1,23 @@
+# Caddy snippet for al.homelab homepage
+#
+# Add the `respond /data/*` and `respond /includes/*` directives
+# inside your existing site block for al-info.net, e.g.:
+#
+#   al-info.net {
+#       ...existing config...
+#       import homelab-php
+#   }
+
+(homelab-php) {
+    # Block direct access to sensitive directories — Caddy ignores .htaccess
+    respond /data/*     403
+    respond /includes/* 403
+    respond /config.php 403
+    respond /setup.php  403
+
+    # PHP-FPM via unix socket (adjust socket path to match your Termux php-fpm config)
+    php_fastcgi unix//data/data/com.termux/files/usr/var/run/php-fpm.sock
+
+    # Serve static files directly (logo, favicon, etc.)
+    file_server
+}

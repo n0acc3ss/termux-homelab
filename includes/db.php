@@ -53,13 +53,14 @@ function default_services(): array {
             'type'  => 'grid',
             'items' => [
                 ['id'=>'nextcloud',   'name'=>'Nextcloud',    'icon'=>'☁️',  'desc'=>'Private cloud. Sync files, photos & calendars across all devices.', 'url'=>'https://cloud.al-info.net',  'status'=>'online',      'classes'=>''],
-                ['id'=>'airsonic',    'name'=>'Airsonic',     'icon'=>'🎵',  'desc'=>'Self-hosted Subsonic server. Stream your music library anywhere.',  'url'=>'https://audio.al-info.net',  'status'=>'online',      'classes'=>''],
+                ['id'=>'navidrome',   'name'=>'Navidrome',    'icon'=>'🎵',  'desc'=>'Self-hosted music server. Stream your library via any Subsonic client.', 'url'=>'https://audio.al-info.net', 'status'=>'online',     'classes'=>''],
+                ['id'=>'jellyfin',    'name'=>'Jellyfin',     'icon'=>'🎬',  'desc'=>'Private media server. Stream movies, TV, and music to any device.',  'url'=>'https://media.al-info.net',  'status'=>'soon',        'classes'=>''],
                 ['id'=>'upscayl',     'name'=>'Upscayl',      'icon'=>'🔍',  'desc'=>'AI image upscaling. Enhance resolution without losing detail.',       'url'=>'#',                          'status'=>'soon',        'classes'=>''],
                 ['id'=>'vaultwarden', 'name'=>'Vaultwarden',  'icon'=>'🔐',  'desc'=>'Self-hosted Bitwarden-compatible password vault. Fully private.',    'url'=>'#',                          'status'=>'soon',        'classes'=>''],
                 ['id'=>'rustdesk',    'name'=>'RustDesk',     'icon'=>'🖥️', 'desc'=>'Private remote desktop relay. Access any device, no third party.',   'url'=>'#',                          'status'=>'soon',        'classes'=>''],
                 ['id'=>'copyparty',   'name'=>'Copyparty',    'icon'=>'📂',  'desc'=>'Fast file sharing & media server. Upload, browse & stream.',          'url'=>'#',                          'status'=>'soon',        'classes'=>''],
                 ['id'=>'suno',        'name'=>'SUNO Thai',    'icon'=>'🎼',  'desc'=>'Agentic Thai lyric composer. AI-powered songwriting via API.',       'url'=>'#',                          'status'=>'soon',        'classes'=>'sc-ai'],
-                ['id'=>'admin',       'name'=>'Admin',        'icon'=>'🛡️', 'desc'=>'Infrastructure dashboard. Restricted access only.',                  'url'=>'https://admin.al-info.net',  'status'=>'restricted',  'classes'=>'sc-admin'],
+                ['id'=>'admin',       'name'=>'Admin',        'icon'=>'🛡️', 'desc'=>'Infrastructure dashboard. Restricted access only.',                  'url'=>'/admin/',                    'status'=>'restricted',  'classes'=>'sc-admin'],
             ],
         ],
         [
