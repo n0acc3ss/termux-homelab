@@ -1,0 +1,2 @@
+#!/data/data/com.termux/files/usr/bin/sh
+exec navidrome --configfile /data/data/com.termux/files/home/.local/share/navidrome/navidrome.toml 2>&1

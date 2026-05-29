@@ -1,0 +1,2 @@
+#!/data/data/com.termux/files/usr/bin/sh
+exec caddy run --config /data/data/com.termux/files/home/.config/caddy/Caddyfile --adapter caddyfile 2>&1

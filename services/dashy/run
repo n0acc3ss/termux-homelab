@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/sh
+export PORT=8443
+export NODE_ENV=production
+cd /data/data/com.termux/files/home/.local/share/dashy
+exec node server.js 2>&1

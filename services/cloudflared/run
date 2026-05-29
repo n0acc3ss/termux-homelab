@@ -1,0 +1,2 @@
+#!/data/data/com.termux/files/usr/bin/sh
+exec cloudflared tunnel --config /data/data/com.termux/files/home/.cloudflared/config.yml run 2>&1

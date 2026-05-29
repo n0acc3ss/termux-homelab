@@ -1,0 +1,13 @@
+tunnel: c5dbab1d-43f0-4729-bea5-fd78ba38b5f8
+credentials-file: /data/data/com.termux/files/home/.cloudflared/c5dbab1d-43f0-4729-bea5-fd78ba38b5f8.json
+
+ingress:
+  - hostname: jellyfin.al-info.net
+    service: http://localhost:8080
+  - hostname: cloud.al-info.net
+    service: http://localhost:8080
+  - hostname: music.al-info.net
+    service: http://localhost:8080
+  - hostname: home.al-info.net
+    service: http://localhost:8080
+  - service: http_status:404

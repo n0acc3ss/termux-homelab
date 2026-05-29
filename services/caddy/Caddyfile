@@ -1,0 +1,61 @@
+{
+    auto_https off
+    admin off
+    persist_config off
+    http_port 8080
+    storage file_system {
+        root /data/data/com.termux/files/home/.local/share/caddy
+    }
+}
+
+:8080 {
+    log {
+        output file /data/data/com.termux/files/home/.local/share/caddy/access.log
+        format console
+    }
+
+    @jellyfin host jellyfin.al-info.net
+    handle @jellyfin {
+        reverse_proxy 127.0.0.1:8096
+    }
+
+    @music host music.al-info.net
+    handle @music {
+        reverse_proxy 127.0.0.1:4533
+    }
+
+    @home host home.al-info.net
+    handle @home {
+        root * /data/data/com.termux/files/home/.config/homepage
+        file_server
+    }
+
+    @cloud host cloud.al-info.net
+    handle @cloud {
+        root * /data/data/com.termux/files/usr/share/nextcloud
+
+        header Strict-Transport-Security "max-age=15552000; includeSubDomains"
+        header X-Forwarded-Proto "https"
+
+        redir /.well-known/caldav  /remote.php/dav 301
+        redir /.well-known/carddav /remote.php/dav 301
+
+        php_fastcgi unix//data/data/com.termux/files/usr/var/run/php-fpm.sock
+        file_server
+        encode gzip
+    }
+
+    @admin host admin.al-info.net
+    handle @admin {
+        reverse_proxy 127.0.0.1:8443
+    }
+
+    handle {
+        respond "al-info.net: unknown host" 404
+    }
+}
+
+respond /data/*     403
+respond /includes/* 403
+respond /config.php 403
+respond /setup.php  403

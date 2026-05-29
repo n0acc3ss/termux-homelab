@@ -1,0 +1,5 @@
+DataFolder = "/data/data/com.termux/files/home/.local/share/navidrome"
+MusicFolder = "/storage/emulated/0/Music"
+Address = "127.0.0.1"
+Port = 4533
+LogLevel = "info"

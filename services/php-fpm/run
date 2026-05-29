@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/sh
+mkdir -p /data/data/com.termux/files/home/.php
+if [ -f "/data/data/com.termux/files/home/.php/php-fpm.conf" ]; then CONFIG="/data/data/com.termux/files/home/.php/php-fpm.conf"; else CONFIG="/data/data/com.termux/files/usr/etc/php-fpm.conf"; fi
+exec php-fpm -F -y $CONFIG -c ~/.php/php.ini 2>&1

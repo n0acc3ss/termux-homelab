@@ -1,0 +1,24 @@
+# Secrets & credentials
+*.json
+*.pem
+*.key
+*.crt
+secrets/
+.env
+
+# Navidrome data
+*.db
+*.db-shm
+*.db-wal
+
+# Logs & caches
+*.log
+cache/
+artwork/
+plugins/
+
+# Node
+node_modules/
+
+# Claude Code
+.claude/
