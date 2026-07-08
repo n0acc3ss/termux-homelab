@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>กุ้ยช่ายคุณมด — ของรัญจวนความอร่อย</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@300;400;500;600;700&family=Sarabun:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:   #1b3a28;
+      --green-mid:    #2d5a3d;
+      --green-light:  #4a7c59;
+      --gold:         #c9a84c;
+      --gold-light:   #e8c96a;
+      --gold-pale:    #f5e8b0;
+      --cream:        #f8f4ec;
+      --ivory:        #fdfaf4;
+      --text-dark:    #1a2a1e;
+      --text-mid:     #3d5a47;
+      --text-light:   #7a9a84;
+      --white:        #ffffff;
+      --font-serif:   'Noto Serif Thai', serif;
+      --font-sans:    'Sarabun', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--green-mid); border-radius: 3px; }
+
+    /* ── Utility ── */
+    .gold-line {
+      display: inline-block;
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      vertical-align: middle;
+    }
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(27, 58, 40, 0.96);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .nav-logo .ant-icon {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      position: relative;
+      padding-bottom: 3px;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      border-radius: 40px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--green-deep); }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--gold-light);
+      transition: all 0.3s;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, #0d2218 0%, #1b3a28 40%, #2d5a3d 100%);
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 70%, rgba(45,90,61,0.4) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .petals-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      width: 8px; height: 12px;
+      background: radial-gradient(ellipse at 40% 30%, rgba(201,168,76,0.6), rgba(201,168,76,0.1));
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: floatPetal linear infinite;
+      opacity: 0;
+    }
+    @keyframes floatPetal {
+      0%   { transform: translateY(110vh) rotate(0deg) translateX(0);   opacity: 0; }
+      5%   { opacity: 0.7; }
+      95%  { opacity: 0.4; }
+      100% { transform: translateY(-10vh) rotate(720deg) translateX(60px); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+    }
+    .hero-title .gold-accent { color: var(--gold-light); }
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.08em;
+    }
+    .hero-tagline {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-light);
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2.2rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--green-deep);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.5);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      color: var(--gold-light);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+    .hero-scroll-hint .arrow-down {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .hero-image-float {
+      position: absolute;
+      right: -2%;
+      bottom: 0;
+      width: min(45%, 500px);
+      opacity: 0.18;
+      pointer-events: none;
+      filter: saturate(0.3) brightness(1.4);
+    }
+
+    /* ── Ornament Divider ── */
+    .ornament-divider {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 0.5em;
+      opacity: 0.6;
+    }
+
+    /* ── Story Section ── */
+    #story {
+      padding: 7rem 2rem;
+      background: var(--ivory);
+    }
+    .story-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .story-image-wrap {
+      position: relative;
+    }
+    .story-image-wrap img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(27,58,40,0.2);
+    }
+    .story-image-frame {
+      position: absolute;
+      top: -16px; left: -16px;
+      right: 16px; bottom: 16px;
+      border: 1.5px solid var(--gold);
+      border-radius: 4px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .story-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 90px; height: 90px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-align: center;
+      color: var(--green-deep);
+      text-transform: uppercase;
+      line-height: 1.4;
+      padding: 0.5rem;
+    }
+    .story-badge .big { font-size: 1.1rem; font-family: var(--font-serif); font-weight: 700; }
+    .story-text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--green-deep);
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+    .story-text p {
+      color: var(--text-mid);
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.95;
+    }
+    .story-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+    .value-icon {
+      width: 36px; height: 36px;
+      min-width: 36px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 0.9rem;
+    }
+    .value-item h4 {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      color: var(--green-deep);
+      margin-bottom: 0.2rem;
+    }
+    .value-item p { font-size: 0.8rem; color: var(--text-light); margin: 0; }
+
+    /* ── Products Section ── */
+    #products {
+      padding: 7rem 2rem;
+      background: linear-gradient(180deg, var(--cream) 0%, #ede8dc 100%);
+    }
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 5rem;
+    }
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--green-deep);
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .products-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(27,58,40,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 56px rgba(27,58,40,0.16);
+    }
+    .product-card-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .product-card-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .product-card:hover .product-card-image img {
+      transform: scale(1.06);
+    }
+    .product-card-badge {
+      position: absolute;
+      top: 1.2rem; left: 1.2rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--green-deep);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+    .product-card-body {
+      padding: 1.8rem 2rem 2rem;
+    }
+    .product-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--green-deep);
+      margin-bottom: 0.5rem;
+    }
+    .product-card-sub {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.9rem;
+    }
+    .product-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .product-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--green-mid);
+      font-weight: 600;
+    }
+    .product-price span {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+    .btn-card {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.3rem;
+      border: 1px solid var(--green-mid);
+      color: var(--green-mid);
+      border-radius: 30px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-card:hover { background: var(--green-mid); color: var(--white); }
+
+    /* ── Features Strip ── */
+    #features {
+      background: var(--green-deep);
+      padding: 5rem 2rem;
+    }
+    .features-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .feature-item {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .feature-icon-wrap {
+      width: 64px; height: 64px;
+      border: 1.5px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .feature-item:hover .feature-icon-wrap {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.1);
+    }
+    .feature-item h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--gold-light);
+      margin-bottom: 0.6rem;
+    }
+    .feature-item p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+    }
+
+    /* ── Gallery / Packaging ── */
+    #gallery {
+      padding: 7rem 2rem;
+      background: var(--ivory);
+    }
+    .gallery-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1.2rem;
+      margin-top: 4rem;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--cream);
+    }
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(27,58,40,0.6) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay-text {
+      color: var(--white);
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+    }
+
+    /* ── Testimonials ── */
+    #testimonials {
+      padding: 7rem 2rem;
+      background: linear-gradient(160deg, var(--green-deep) 0%, #1a3028 100%);
+    }
+    .testimonials-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonials-slider {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 8px;
+      padding: 2.2rem;
+      position: relative;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(201,168,76,0.5);
+      background: rgba(255,255,255,0.06);
+    }
+    .quote-mark {
+      position: absolute;
+      top: 1.5rem; right: 1.8rem;
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      line-height: 1;
+      color: rgba(201,168,76,0.15);
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-mid), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+    .author-name {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      color: var(--gold-light);
+    }
+    .author-sub {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.05em;
+    }
+    .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 0.8rem; }
+
+    /* ── Order / CTA ── */
+    #order {
+      padding: 8rem 2rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .order-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .order-bg-circle:nth-child(1) {
+      width: 600px; height: 600px;
+      top: -200px; right: -200px;
+      background: radial-gradient(ellipse, rgba(45,90,61,0.08) 0%, transparent 70%);
+    }
+    .order-bg-circle:nth-child(2) {
+      width: 400px; height: 400px;
+      bottom: -100px; left: -100px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+    }
+    .order-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .order-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 4rem;
+      box-shadow: 0 16px 60px rgba(27,58,40,0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .order-text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: var(--green-deep);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
+    .order-text p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 0.6rem;
+    }
+    .contact-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+    }
+    .contact-list li .icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .order-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(27,58,40,0.15);
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: var(--ivory);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-mid);
+      box-shadow: 0 0 0 3px rgba(45,90,61,0.1);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-light) 100%);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(27,58,40,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 0.5rem;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(27,58,40,0.3);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--green-deep);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      z-index: 999;
+      transition: transform 0.4s ease;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--text-dark);
+      padding: 4rem 2rem 2rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+    .footer-brand-desc {
+      line-height: 1.9;
+      color: rgba(255,255,255,0.45);
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      transition: all 0.3s;
+    }
+    .social-links a:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.1);
+    }
+
+    /* ── Mobile Nav ── */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: rgba(13,34,24,0.98);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+    }
+    .mobile-menu.open { transform: none; }
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold-light); }
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      font-size: 1.5rem;
+      color: var(--gold);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+      .story-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .story-image-wrap { order: -1; }
+      .products-grid { grid-template-columns: 1fr; }
+      .features-inner { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-row: auto; }
+      .testimonials-slider { grid-template-columns: 1fr; }
+      .order-card { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2.6rem; }
+      .features-inner { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      #order { padding: 5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="ปิด">✕</button>
+    <a href="#story" onclick="closeMobileMenu()">เรื่องราวของเรา</a>
+    <a href="#products" onclick="closeMobileMenu()">เมนู</a>
+    <a href="#gallery" onclick="closeMobileMenu()">แกลเลอรี่</a>
+    <a href="#order" onclick="closeMobileMenu()">สั่งซื้อ</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <div class="ant-icon">🐜</div>
+      กุ้ยช่ายคุณมด
+    </a>
+    <ul class="nav-links">
+      <li><a href="#story">เรื่องราวของเรา</a></li>
+      <li><a href="#products">เมนู</a></li>
+      <li><a href="#gallery">แกลเลอรี่</a></li>
+    </ul>
+    <a href="#order" class="nav-cta">สั่งซื้อ</a>
+    <div class="nav-burger" id="navBurger" role="button" aria-label="เมนู">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="petals-container" id="petalsContainer"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="gold-line"></span>
+        ขนมไทยแท้ — สูตรต้นตำรับ
+        <span class="gold-line"></span>
+      </div>
+      <h1 class="hero-title">
+        กุ้ยช่าย<br/>
+        <span class="gold-accent">คุณมด</span>
+      </h1>
+      <p class="hero-subtitle">ของรัญจวนความอร่อย · สุขใจสวนเกิ้ง</p>
+      <p class="hero-tagline">"ทำด้วยใจ รักทุกคำ"</p>
+      <div class="hero-cta-group">
+        <a href="#products" class="btn-primary">ดูเมนูทั้งหมด ✦</a>
+        <a href="#story" class="btn-outline">เรื่องราวของเรา</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>เลื่อนลง</span>
+      <div class="arrow-down"></div>
+    </div>
+  </section>
+
+  <div class="ornament-divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- Story -->
+  <section id="story">
+    <div class="story-inner">
+      <div class="story-image-wrap reveal-left">
+        <div class="story-image-frame"></div>
+        <img src="img/box-green-1.png" alt="กุ้ยช่ายคุณมด — กล่องพรีเมียม" loading="lazy" />
+        <div class="story-badge">
+          <div class="big">🌿</div>
+          <div>ส่วนผสม<br/>ธรรมชาติ<br/>100%</div>
+        </div>
+      </div>
+
+      <div class="story-text reveal-right">
+        <span class="section-label">เรื่องราวของเรา</span>
+        <h2>จากสวนครัวสู่มือคุณ<br/>ด้วยความรักแท้จริง</h2>
+        <p>กุ้ยช่ายคุณมด เกิดจากความหลงใหลในขนมไทยโบราณที่สืบทอดกันมาหลายชั่วอายุคน เราคัดสรรกุ้ยช่ายสดจากสวนอินทรีย์ และปรุงด้วยมือทุกคำ เพื่อให้คุณได้สัมผัสรสชาติที่แท้จริง</p>
+        <p>แต่ละชิ้นถูกกดทับด้วยพิมพ์ดอกไม้โบราณ ทำให้มีรูปทรงสวยงามราวกับงานศิลปะ เหมาะสำหรับทั้งการรับประทานเองและมอบเป็นของฝากพิเศษ</p>
+        <div class="story-values">
+          <div class="value-item">
+            <div class="value-icon">🌱</div>
+            <div>
+              <h4>วัตถุดิบสด</h4>
+              <p>กุ้ยช่ายสดจากสวนอินทรีย์คัดสรรทุกวัน</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">✋</div>
+            <div>
+              <h4>ทำด้วยมือ</h4>
+              <p>ทุกชิ้นกดพิมพ์ด้วยมืออย่างประณีต</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🎁</div>
+            <div>
+              <h4>บรรจุอย่างพิถีพิถัน</h4>
+              <p>กล่องพรีเมียมพร้อมส่งเป็นของขวัญ</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">❤️</div>
+            <div>
+              <h4>ทำด้วยใจ</h4>
+              <p>ทุกคำคือความรักที่ใส่ลงไปในขนม</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products">
+    <div class="section-header reveal">
+      <span class="section-label">เมนูของเรา</span>
+      <h2>กุ้ยช่ายพิมพ์ดอก<br/>สูตรต้นตำรับ</h2>
+      <p>เลือกสรรบรรจุภัณฑ์ที่เหมาะกับทุกโอกาส ทั้งสำหรับรับประทานเองและมอบเป็นของขวัญสุดพิเศษ</p>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-card-image">
+          <img src="img/box-kraft.png" alt="กล่องกระดาษคราฟท์" loading="lazy" />
+          <div class="product-card-badge">ยอดนิยม</div>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-title">กล่องคลาสสิก</h3>
+          <div class="product-card-sub">Kraft Box · 9 ชิ้น</div>
+          <p class="product-card-desc">กล่องกระดาษคราฟท์ธรรมชาติ ดีไซน์เรียบง่ายแต่มีเสน่ห์ บรรจุกุ้ยช่ายพิมพ์ดอก 9 ชิ้น พร้อมน้ำจิ้มสูตรพิเศษ วางบนใบตองสด ส่งตรงถึงมือด้วยความสดใหม่</p>
+          <div class="product-card-footer">
+            <div class="product-price">฿180 <span>/ กล่อง</span></div>
+            <a href="#order" class="btn-card">สั่งซื้อ</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.15s">
+        <div class="product-card-image">
+          <img src="img/box-green-1.png" alt="กล่องพรีเมียมสีเขียว" loading="lazy" />
+          <div class="product-card-badge">พรีเมียม</div>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-title">กล่องพรีเมียม</h3>
+          <div class="product-card-sub">Luxury Green Box · 9 ชิ้น</div>
+          <p class="product-card-desc">กล่องผ้าลินินสีเขียวเข้ม ปิดทองตราสัญลักษณ์ เหมาะสำหรับมอบเป็นของขวัญสุดพิเศษ บรรจุกุ้ยช่ายพิมพ์ดอก 9 ชิ้น พร้อมน้ำจิ้มและส้อมทอง</p>
+          <div class="product-card-footer">
+            <div class="product-price">฿280 <span>/ กล่อง</span></div>
+            <a href="#order" class="btn-card">สั่งซื้อ</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.3s">
+        <div class="product-card-image">
+          <img src="img/box-green-2.png" alt="กล่องพรีเมียมสีเขียว 2" loading="lazy" />
+          <div class="product-card-badge">Gift Set</div>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-title">เซตของขวัญ</h3>
+          <div class="product-card-sub">Gift Premium · 2 กล่อง</div>
+          <p class="product-card-desc">เซตของขวัญ 2 กล่องพรีเมียม บรรจุในถุงผ้า พร้อมการ์ดอวยพรสุดประณีต เหมาะสำหรับเทศกาล วันเกิด หรือโอกาสพิเศษทุกงาน</p>
+          <div class="product-card-footer">
+            <div class="product-price">฿520 <span>/ เซต</span></div>
+            <a href="#order" class="btn-card">สั่งซื้อ</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:0.45s">
+        <div class="product-card-image">
+          <img src="img/box-kraft-2.png" alt="กล่องคราฟท์ 2" loading="lazy" />
+          <div class="product-card-badge">Bulk Order</div>
+        </div>
+        <div class="product-card-body">
+          <h3 class="product-card-title">ออเดอร์จำนวนมาก</h3>
+          <div class="product-card-sub">Corporate & Events · 10+ กล่อง</div>
+          <p class="product-card-desc">บริการสั่งผลิตสำหรับงานองค์กร งานแต่ง หรืองานอีเวนต์ สามารถปรับบรรจุภัณฑ์ ใส่โลโก้องค์กร และส่งในปริมาณมากได้ ติดต่อเพื่อรับราคาพิเศษ</p>
+          <div class="product-card-footer">
+            <div class="product-price">ราคา <span>พิเศษ</span></div>
+            <a href="#order" class="btn-card">ติดต่อเรา</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="features-inner">
+      <div class="feature-item reveal">
+        <div class="feature-icon-wrap">🌿</div>
+        <h3>วัตถุดิบธรรมชาติ</h3>
+        <p>กุ้ยช่ายสดคัดสรรจากสวนอินทรีย์ ไม่ใส่สารกันบูด ปลอดภัยสำหรับทุกคน</p>
+      </div>
+      <div class="feature-item reveal" style="transition-delay:0.1s">
+        <div class="feature-icon-wrap">🎨</div>
+        <h3>พิมพ์ดอกไม้โบราณ</h3>
+        <p>ทุกชิ้นกดด้วยพิมพ์ดอกไม้แบบโบราณ ทำให้ทั้งสวยงามและมีเอกลักษณ์</p>
+      </div>
+      <div class="feature-item reveal" style="transition-delay:0.2s">
+        <div class="feature-icon-wrap">📦</div>
+        <h3>บรรจุภัณฑ์พรีเมียม</h3>
+        <p>กล่องออกแบบพิเศษ เหมาะแก่การมอบเป็นของขวัญในทุกโอกาสพิเศษ</p>
+      </div>
+      <div class="feature-item reveal" style="transition-delay:0.3s">
+        <div class="feature-icon-wrap">🚀</div>
+        <h3>ส่งด่วนทั่วไทย</h3>
+        <p>บริการจัดส่งถึงมือคุณอย่างรวดเร็ว รับประกันความสดใหม่ทุกออเดอร์</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="gallery-inner">
+      <div class="section-header reveal">
+        <span class="section-label">แกลเลอรี่</span>
+        <h2>ความสวยงาม<br/>ในทุกรายละเอียด</h2>
+        <p>กุ้ยช่ายพิมพ์ดอกที่สวยงามราวงานศิลปะ ผสานความอร่อยแท้จริงที่คุณสัมผัสได้</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal-left">
+          <img src="img/box-green-1.png" alt="กุ้ยช่ายพรีเมียม" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-text">กล่องพรีเมียมสีเขียว</div>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="img/box-kraft.png" alt="กล่องคราฟท์" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-text">กล่องคราฟท์คลาสสิก</div>
+          </div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.15s">
+          <img src="img/box-kraft-2.png" alt="กล่องคราฟท์ 2" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-text">บรรจุพิถีพิถัน</div>
+          </div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.3s">
+          <img src="img/box-green-2.png" alt="กล่องเขียว 2" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-text">พิมพ์ดอกไม้โบราณ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="testimonials-inner">
+      <div class="section-header reveal" style="--text-color: white;">
+        <span class="section-label">รีวิวจากลูกค้า</span>
+        <h2 style="color: var(--white);">ความประทับใจ<br/><span style="color: var(--gold-light);">จากทุกคำที่ลิ้มลอง</span></h2>
+      </div>
+      <div class="testimonials-slider">
+        <div class="testimonial-card reveal">
+          <div class="quote-mark">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"อร่อยมากค่ะ กุ้ยช่ายสดหอมมาก แป้งนุ่มพอดี ไม่แข็งไม่เละ น้ำจิ้มก็อร่อยมาก กล่องสวยมากเหมาะเป็นของฝาก สั่งมาแล้วหลายรอบแล้วค่ะ"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">น</div>
+            <div>
+              <div class="author-name">คุณนภา วิไลพร</div>
+              <div class="author-sub">ลูกค้าประจำ · กรุงเทพฯ</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:0.15s">
+          <div class="quote-mark">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"สั่งไปเป็นของขวัญวันเกิดแม่ครับ ท่านชอบมากเลย บอกว่ากุ้ยช่ายอร่อยที่สุดที่เคยกิน กล่องก็สวยงามมาก คุ้มค่ามากครับ แนะนำเลย"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">ก</div>
+            <div>
+              <div class="author-name">คุณกิตติ สุขสมบูรณ์</div>
+              <div class="author-sub">ลูกค้าใหม่ · เชียงใหม่</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:0.3s">
+          <div class="quote-mark">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"สั่งไปเป็นของแจกในงานแต่งค่ะ ทุกคนชอบมาก ทั้งตัวขนมและกล่องสวยงามมาก ทางร้านใจดีมากค่ะ สั่งจำนวนเยอะก็ดูแลได้ดี แนะนำสุดๆ"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">พ</div>
+            <div>
+              <div class="author-name">คุณพิมพ์ใจ อัมพรรัตน์</div>
+              <div class="author-sub">งานแต่งงาน · ขอนแก่น</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order -->
+  <section id="order">
+    <div class="order-bg-circle"></div>
+    <div class="order-bg-circle"></div>
+    <div class="order-inner">
+      <div class="order-card reveal">
+        <div class="order-text">
+          <span class="section-label">ติดต่อสั่งซื้อ</span>
+          <h2>พร้อมส่งความ<br/>อร่อยถึงมือคุณ</h2>
+          <p>สั่งผ่านฟอร์มหรือช่องทางที่คุณสะดวก เราพร้อมบริการทุกวัน และส่งสินค้าสดใหม่ทุกออเดอร์</p>
+          <ul class="contact-list">
+            <li>
+              <span class="icon">📱</span>
+              <span>LINE: @kuichaimed · โทร 08X-XXX-XXXX</span>
+            </li>
+            <li>
+              <span class="icon">📸</span>
+              <span>Instagram: @kuichai.khunmod</span>
+            </li>
+            <li>
+              <span class="icon">🕐</span>
+              <span>รับออเดอร์ทุกวัน 08:00 – 20:00 น.</span>
+            </li>
+            <li>
+              <span class="icon">📦</span>
+              <span>จัดส่งทุกวัน · ส่งด่วน Kerry / Flash</span>
+            </li>
+          </ul>
+        </div>
+        <form class="order-form" id="orderForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">ชื่อ</label>
+              <input type="text" id="fname" placeholder="ชื่อของคุณ" required />
+            </div>
+            <div class="form-group">
+              <label for="lphone">เบอร์โทร</label>
+              <input type="tel" id="lphone" placeholder="08X-XXX-XXXX" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="product">สินค้าที่ต้องการ</label>
+            <select id="product" required>
+              <option value="">-- เลือกสินค้า --</option>
+              <option>กล่องคลาสสิก (฿180) — 9 ชิ้น</option>
+              <option>กล่องพรีเมียม (฿280) — 9 ชิ้น</option>
+              <option>เซตของขวัญ (฿520) — 2 กล่อง</option>
+              <option>ออเดอร์จำนวนมาก — ติดต่อสอบถาม</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="qty">จำนวน / รายละเอียดเพิ่มเติม</label>
+            <textarea id="qty" rows="3" placeholder="จำนวนกล่อง, วันที่ต้องการ, ข้อความบนการ์ด..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">ส่งคำสั่งซื้อ ✦</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">กุ้ยช่ายคุณมด 🐜</div>
+          <p class="footer-brand-desc">ขนมไทยแท้สูตรต้นตำรับ ทำด้วยมือด้วยความรัก วัตถุดิบสดใหม่คัดสรรทุกวัน เพื่อรสชาติที่ดีที่สุดในทุกคำ</p>
+        </div>
+        <div class="footer-col">
+          <h4>เมนู</h4>
+          <ul>
+            <li><a href="#products">กล่องคลาสสิก</a></li>
+            <li><a href="#products">กล่องพรีเมียม</a></li>
+            <li><a href="#products">เซตของขวัญ</a></li>
+            <li><a href="#products">ออเดอร์จำนวนมาก</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>ติดต่อ</h4>
+          <ul>
+            <li><a href="#order">LINE @kuichaimed</a></li>
+            <li><a href="#order">Instagram</a></li>
+            <li><a href="#order">สั่งซื้อออนไลน์</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2567 กุ้ยช่ายคุณมด · สงวนลิขสิทธิ์ · ทำด้วยใจ 🤍</div>
+        <div class="social-links">
+          <a href="#" title="LINE">L</a>
+          <a href="#" title="Instagram">ig</a>
+          <a href="#" title="Facebook">fb</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">✓ ส่งคำสั่งซื้อแล้ว! เราจะติดต่อกลับภายใน 24 ชม.</div>
+
+  <script>
+    // ── Petal animation ──
+    (function() {
+      const container = document.getElementById('petalsContainer');
+      const count = 18;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.style.left    = Math.random() * 100 + '%';
+        p.style.width   = (6 + Math.random() * 8) + 'px';
+        p.style.height  = (10 + Math.random() * 10) + 'px';
+        p.style.animationDuration  = (12 + Math.random() * 18) + 's';
+        p.style.animationDelay     = (Math.random() * 20) + 's';
+        p.style.opacity = Math.random() * 0.5 + 0.1;
+        container.appendChild(p);
+      }
+    })();
+
+    // ── Navbar scroll ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Mobile menu ──
+    const mobileMenu = document.getElementById('mobileMenu');
+    document.getElementById('navBurger').addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('mobileClose').addEventListener('click', closeMobileMenu);
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+
+    // ── Order form ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-submit');
+      btn.textContent = 'กำลังส่ง...';
+      btn.disabled = true;
+      setTimeout(() => {
+        e.target.reset();
+        btn.textContent = 'ส่งคำสั่งซื้อ ✦';
+        btn.disabled = false;
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+      }, 1200);
+    }
+
+    // ── Smooth nav link close on mobile ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth < 900) closeMobileMenu();
+      });
+    });
+  </script>
+</body>
+</html>
